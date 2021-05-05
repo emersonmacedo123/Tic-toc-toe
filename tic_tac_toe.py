@@ -19,12 +19,24 @@ def get_ai_move(board, player):
 
 
 def mark(board, player, row, col):
-    """Marks the element at row & col on the board for player."""
-    pass
+    if board[row][col] == ".":
+        if player == "P1":
+            board[row][col] = "X"
+        else:
+            board[row][col] = "0"
+    else:
+        #do nothing
+        pass
+    return board
+
 
 
 def has_won(board, player):
-    """Returns True if player has won the game."""
+    i = 0
+    while i >= 0:
+        print("test")
+
+
     return False
 
 
@@ -35,11 +47,11 @@ def is_full(board):
 
 def print_board(board):
     print("   1   2   3   ")
-    print("   " + board[0][0] + " | " + board[0][1]  + " | " + board[0][2]  )
+    print("A   " + board[0][0] + " | " + board[0][1]  + " | " + board[0][2]  )
     print("  ---+---+---")
-    print("   " + board[1][0] + " | " + board[1][1]  + " | " + board[1][2]  )
+    print("B   " + board[1][0] + " | " + board[1][1]  + " | " + board[1][2]  )
     print("  ---+---+---")
-    print("   " + board[2][0] + " | " + board[2][1]  + " | " + board[2][2]  )
+    print("C   " + board[2][0] + " | " + board[2][1]  + " | " + board[2][2]  )
     pass
 
 
@@ -71,3 +83,9 @@ if __name__ == '__main__':
 #Testing purpose only
 init_board = init_board()
 print_board(init_board)
+player = "P1"
+row = 2
+col = 2
+mark(init_board, player, row, col)
+print_board(init_board)
+mark(init_board, player, row, col)
