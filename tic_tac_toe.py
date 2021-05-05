@@ -8,7 +8,7 @@ def init_board():
 def validate_user_input(input):
     valid = False
     if len(input) == 2:
-        if input[0] in game_board_row and input[1] in game_board_col:
+        if input[0] in ["A", "B", "C"] and input[1] in ["1", "2", "3"]:
             valid = True
         else:
             print('Wrong coordinates')
@@ -24,7 +24,7 @@ def get_move():
             valid_user_input = user_input
         else:
             valid_user_input = ''
-    return valid_user_input
+    return row, col
 
 
 def get_ai_move(board, player):
