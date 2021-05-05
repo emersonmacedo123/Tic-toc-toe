@@ -5,11 +5,26 @@ def init_board():
     board = [rowA, rowB, rowC]
     return board
 
+def validate_user_input(input):
+    valid = False
+    if len(input) == 2:
+        if input[0] in game_board_row and input[1] in game_board_col:
+            valid = True
+        else:
+            print('Wrong coordinates')
+    else:
+        print('Please enter valid coordinates')
+    return valid
 
-def get_move(board, player):
-    """Returns the coordinates of a valid move for player on board."""
-    row, col = 0, 0
-    return row, col
+def get_move():
+    valid_user_input = ''
+    while valid_user_input == '':
+        user_input = input('Please provide cordindate: ')
+        if validate_user_input(user_input):
+            valid_user_input = user_input
+        else:
+            valid_user_input = ''
+    return valid_user_input
 
 
 def get_ai_move(board, player):
