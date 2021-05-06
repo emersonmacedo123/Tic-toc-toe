@@ -1,7 +1,7 @@
 def init_board():
-    rowA = [".", ".", "."]
-    rowB = [".", ".", "."]
-    rowC = [".", ".", "."]
+    rowA = ["x", ".", "."]
+    rowB = [".", "x", "."]
+    rowC = [".", ".", "x"]
     board = [rowA, rowB, rowC]
     return board
 
@@ -49,10 +49,28 @@ def mark(board, player, row, col):
 
 def has_won(board, player):
     i = 0
-    while i >= 0:
-        print("test")
-
-
+    #checking line
+    while i <= 2:
+        if board[i][0] != "." and board[i][0] == board[i][1] == board[i][2]:
+            print("has winner line")
+            return True
+            break
+        i+=1
+    #checking column
+    j=0
+    while j <= 2:
+        if board[0][j] != "." and board[0][j] == board[1][j] == board[2][j]:
+            print("has winner column")
+            return True
+            break
+        j+=1
+    #checking crossing
+    if board[1][1] != "." and (board[0][0] == board[1][1] == board[2][2] or board[0][2] == board[1][1] == board[2][0]):
+        print("Has winner cross")
+        return True
+    
+    #else: no winner
+    print("Has no winner")
     return False
 
 
@@ -97,13 +115,4 @@ def main_menu():
 if __name__ == '__main__':
     main_menu()
 '''
-############################
-#Testing purpose only
-init_board = init_board()
-print_board(init_board)
-player = "P1"
-row = 2
-col = 2
-mark(init_board, player, row, col)
-print_board(init_board)
-mark(init_board, player, row, col)
+
