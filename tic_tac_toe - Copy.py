@@ -16,24 +16,14 @@ def validate_user_input(input):
         print('Please enter valid coordinates')
     return valid
 
-
 def get_move():
     valid_user_input = ''
-    row = 0
-    col = 0
     while valid_user_input == '':
-        user_input = input('Please provide coordindates: ')
-        if validate_user_input(user_input) == True:
+        user_input = input('Please provide cordindate: ')
+        if validate_user_input(user_input):
             valid_user_input = user_input
-            #converting row to number
-            if user_input[0] == "A":
-                row = 0
-            elif user_input[0] =="B":
-                row = 1
-            else:
-                row = 2
-            #converting col to number
-            col = int(user_input[1]) -1
+        else:
+            valid_user_input = ''
     return row, col
 
 
@@ -82,13 +72,11 @@ def has_won(board, player):
     print("Has no winner")
     return False
 
-'''
+
 def is_full(board):
-   for i in range(1,10):
-       if has_won(board, i):
-           return True
+    """Returns True if board is full."""
     return False
-'''
+
 
 def print_board(board):
     print("   1   2   3   ")
@@ -100,15 +88,9 @@ def print_board(board):
     pass
 
 
-def print_result(player, winner, tie):
-    #proclains winner
-    if winner is True:
-        print("Congrats player " + player + "! You won the game :)")
-    #proclaims tie 
-    elif tie is True:
-        print("...And there's a tie :/ ")
-
-
+def print_result(winner):
+    """Congratulates winner or proclaims tie (if winner equals zero)."""
+    pass
 
 '''
 def tictactoe_game(mode='HUMAN-HUMAN'):
