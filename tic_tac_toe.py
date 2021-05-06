@@ -19,11 +19,12 @@ def validate_user_input(input):
 def get_move():
     valid_user_input = ''
     while valid_user_input == '':
-        user_input = input('Please provide cordindate: ')
-        if validate_user_input(user_input):
+        user_input = input('Please provide coordindates: ')
+        if input[0] == "A" and row == 0:
             valid_user_input = user_input
-        else:
-            valid_user_input = ''
+        elif input[0] == "B" and row == 1:
+            valid_user_input = user_input
+        else row == 2
     return row, col
 
 
@@ -56,7 +57,9 @@ def has_won(board, player):
 
 
 def is_full(board):
-    """Returns True if board is full."""
+   for i in range(1,10):
+       if has_won(board, i):
+           return True
     return False
 
 
