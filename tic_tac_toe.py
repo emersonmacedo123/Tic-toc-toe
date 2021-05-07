@@ -10,17 +10,19 @@ def init_board():
     return board
 
 def validate_user_input(input):
-    valid = False
+    valid = 0
     #Check if in board range
     if len(input) == 2:
         if input[0] in ["A", "B", "C"] and input[1] in ["1", "2", "3"]:
-            valid = True
+            valid = 1
         else:
             print('Coordinates out of range')
+    #check if input is quit
+    elif input == "QUIT":
+        valid = 2
     else:
         print('Please enter valid coordinates')
-    
-
+     
     return valid
 
 
@@ -30,7 +32,8 @@ def get_move():
     col = 0
     while valid_user_input == '':
         user_input = input('Please provide coordindates: ')
-        if validate_user_input(user_input) == True:
+        #case valid and not quit
+        if validate_user_input(user_input) == 1:
             valid_user_input = user_input
             #converting row to number
             if user_input[0] == "A":
@@ -41,6 +44,10 @@ def get_move():
                 row = 2
             #converting col to number
             col = int(user_input[1]) -1
+        elif validate_user_input(user_input) == 2:
+            valid_user_input = user_input
+            row = -1
+            col = row
     return row, col
 
 
@@ -146,6 +153,10 @@ def tictactoe_game(mode='HUMAN-HUMAN'):
             occupied_check = False
             while occupied_check == False:
                 row, col = get_move()
+                #if condition QUIT is activated
+                if row == -1:
+                    print("You decided to quit the game. Thank you.")
+                    gameContinue = False
                 [board, validity] = mark(board, player, row, col)
                 occupied_check = validity
             clean_terminal()
@@ -172,3 +183,4 @@ def main_menu():
 
 if __name__ == '__main__':
     main_menu() 
+    
