@@ -66,12 +66,11 @@ def mark(board, player, row, col):
 
 
 
-def has_won(board, player):
+def has_won(board):
     i = 0
     #checking line
     while i <= 2:
         if board[i][0] != "." and board[i][0] == board[i][1] == board[i][2]:
-            print("Player " + player + " has completed the line. Congrats!")
             return True
             break
         i+=1
@@ -79,17 +78,14 @@ def has_won(board, player):
     j=0
     while j <= 2:
         if board[0][j] != "." and board[0][j] == board[1][j] == board[2][j]:
-            print("Player " + player + " has completed the column. Congrats!")
             return True
             break
         j+=1
     #checking crossing
     if board[1][1] != "." and (board[0][0] == board[1][1] == board[2][2] or board[0][2] == board[1][1] == board[2][0]):
-        print("Player" + player + " won. Congrats!")
         return True
     
     #else: no winner
-    print("Has no winner")
     return False
 
 def is_full(board):
@@ -123,6 +119,8 @@ def print_result(player, winner, tie):
     #proclaims tie 
     elif tie is True:
         print("...And there's a tie :/ ")
+    else:
+        pass
 
 def change_player(player):
     new_player = ""
@@ -136,7 +134,7 @@ def change_player(player):
 
 def tictactoe_game(mode='HUMAN-HUMAN'):
     clean_terminal()
-    print("Welcome to Tic-Toc-Toe game.")
+    print("Welcome to Tic-Tac-Toe game.")
     replay = True
     
     while replay == True:
@@ -150,20 +148,17 @@ def tictactoe_game(mode='HUMAN-HUMAN'):
                 row, col = get_move()
                 [board, validity] = mark(board, player, row, col)
                 occupied_check = validity
-            
-            print_board(board)
-            
-            if has_won(board, player) == True:
-                #We have a winner. End.
-                gameContinue = False
-            elif is_full(board) == True:
-                #We have a tie. End. 
-                gameContinue = False
             clean_terminal()
-            player=change_player(player)
-        print_board(board)
+            winner = has_won(board)
+            tie = is_full(board)
+            if winner == True or is_full(board) == True:
+                print_board(board)
+                print_result(player, winner, tie)
+                gameContinue = False
+            else:
+                player=change_player(player)
         if gameContinue == False:
-            has_won(board, player) == True
+            has_won(board) == True
             replay_trigger = input("Game is over. Would you like to play again? (Y/N)")
             clean_terminal()
             if replay_trigger == "Y":
