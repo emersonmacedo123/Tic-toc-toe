@@ -138,6 +138,7 @@ def tictactoe_game(mode='HUMAN-HUMAN'):
     clean_terminal()
     print("Welcome to Tic-Toc-Toe game.")
     replay = True
+    
     while replay == True:
         board = init_board()
         player = "P1" 
@@ -151,6 +152,7 @@ def tictactoe_game(mode='HUMAN-HUMAN'):
                 occupied_check = validity
             
             print_board(board)
+            
             if has_won(board, player) == True:
                 #We have a winner. End.
                 gameContinue = False
@@ -161,6 +163,7 @@ def tictactoe_game(mode='HUMAN-HUMAN'):
             player=change_player(player)
         print_board(board)
         if gameContinue == False:
+            has_won(board, player) == True
             replay_trigger = input("Game is over. Would you like to play again? (Y/N)")
             clean_terminal()
             if replay_trigger == "Y":
@@ -168,7 +171,7 @@ def tictactoe_game(mode='HUMAN-HUMAN'):
             elif replay_trigger == "N":
                 print("Game is over. Thank you.")
                 replay = False
-    
+                
 def main_menu():
     tictactoe_game('HUMAN-HUMAN')
 
