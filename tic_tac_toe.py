@@ -121,10 +121,10 @@ def print_board(board):
 
 def print_result(player, winner, tie):
     #proclains winner
-    if winner is True:
+    if winner:
         print("Congrats player " + player + "! You won the game :)")
     #proclaims tie 
-    elif tie is True:
+    elif tie:
         print("...And there's a tie :/ ")
     else:
         pass
@@ -169,7 +169,7 @@ def tictactoe_game(mode='HUMAN-HUMAN'):
             else:
                 player=change_player(player)
         if gameContinue == False:
-            has_won(board) == True
+            has_won(board) == True #check if its needed
             replay_trigger = input("Game is over. Would you like to play again? (Y/N)")
             clean_terminal()
             if replay_trigger == "Y":
