@@ -1,0 +1,35 @@
+the matrix has to be more universal (bigger than 3,3)
+all of the system of the game also has to be bigger 
+
+use enum to validate_user_input
+
+get_move
+	use index in a list [ABC] and use it to check 
+	indexof (double check it)
+	it gets the limit bigger (usage of the whole alphabet) 
+
+mark
+	try to use the mark based on the character not on the player 
+	one function -> one functionality 
+	if we are using 'and' probably i've broken the principle 
+	        if player == "P1":
+            board[row][col] = "X"
+        else:
+            board[row][col] = "0"
+print_board
+	use for to make it universal 
+
+print_result
+	does not need to have "if winner is true"
+	only "if winner"
+	otherwise -> 
+	else not needed always 
+
+tictactoe_game -> 
+	get it smaller 
+	use blocks and blank lines every now and thene 
+	use comments as well to better explain it 
+
+draw.io -> better to export and comfmortable to use 
+lucidchart -> another alternative 
+	
